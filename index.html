@@ -19,6 +19,7 @@
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
+  <meta name="google-signin-client_id" content="648351672323-cmgl2ob6jok44ih03p1bf227o7sjhpsc.apps.googleusercontent.com">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -53,6 +54,43 @@
         return appRunner.runApp();
       });
     });
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+    import { getAuth } from "firebase/auth";
+    import { getMessaging } from "firebase/messaging";
+    import { getFirestore } from "firebase/firestore";
+    import { getStorage } from "firebase/storage";
+    import { getDatabase } from "firebase/database";
+  
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDCSVVTezCeKcScHTc-OuXIm8KhhLRhkL8",
+    authDomain: "usersignin-fbecc.firebaseapp.com",
+    databaseURL: "https://usersignin-fbecc-default-rtdb.firebaseio.com",
+    projectId: "usersignin-fbecc",
+    storageBucket: "usersignin-fbecc.appspot.com",
+    messagingSenderId: "648351672323",
+    appId: "1:648351672323:web:d49f9d8338db827ee34636",
+    measurementId: "G-HPQ7VJZKYB"
+  };
+  
+    // Initialize Firebase
+    const database = getDatabase(app);
+    const storage = getStorage(app);
+    const messaging = getMessaging(app);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const app = initializeApp(firebaseConfig);
   </script>
 </body>
 </html>
