@@ -1,3 +1,7 @@
+FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+
 FB.login(function(response) {
     if (response.authResponse) {
       console.log('Welcome! Fetching your information.... ');
@@ -8,4 +12,7 @@ FB.login(function(response) {
       console.log('User cancelled login or did not fully authorize.');
     }
   }, {scope: 'email,user_likes'});
+
   
+
+
