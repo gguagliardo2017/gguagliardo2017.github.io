@@ -107,30 +107,21 @@ const firebaseConfig = {
 <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '1662824620837541',
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v11.0'
+      appId: '1662824620837541',
+      cookie: true,
+      xfbml: true,
+      version: 'v13.0' // Check the latest API version at https://developers.facebook.com/docs/apps/versions
     });
-    
-    FB.getLoginStatus(function(response) {
-      if (response.status === 'connected') {
-        // User is logged in, pass the access token to Flutter
-        window.parent.postMessage({
-          type: 'FACEBOOK_LOGIN_SUCCESS',
-          accessToken: response.authResponse.accessToken
-        }, '*');
-      }
-    });
+    FB.AppEvents.logPageView();
   };
 
   (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
 </script>
 
 </body>
