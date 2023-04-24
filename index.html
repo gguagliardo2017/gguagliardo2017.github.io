@@ -14,6 +14,12 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
+
+  <meta
+  name="facebook-signin-client_id"
+  content="<YOUR_FACEBOOK_APP_ID>"
+/>
+
   <base href="/">
 
   <meta charset="UTF-8">
@@ -98,5 +104,34 @@ const firebaseConfig = {
   const db = getFirestore(app);
   const app = initializeApp(firebaseConfig);
 </script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1662824620837541',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v11.0'
+    });
+    
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+        // User is logged in, pass the access token to Flutter
+        window.parent.postMessage({
+          type: 'FACEBOOK_LOGIN_SUCCESS',
+          accessToken: response.authResponse.accessToken
+        }, '*');
+      }
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 </body>
 </html>
