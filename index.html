@@ -104,6 +104,9 @@ const firebaseConfig = {
   const db = getFirestore(app);
   const app = initializeApp(firebaseConfig);
 </script>
+<script src="FB_login.js" defer></script>
+<script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -123,6 +126,6 @@ const firebaseConfig = {
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 </script>
-<script src="facebook_login.js" defer></script>
+
 </body>
 </html>
