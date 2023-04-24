@@ -122,6 +122,9 @@ const firebaseConfig = {
     statusChangeCallback(response);
   });
 
+};
+
+function facebookLogin(){
   FB.login(function(response) {
     if (response.authResponse) {
       console.log('Welcome! Fetching your information.... ');
@@ -132,9 +135,11 @@ const firebaseConfig = {
       console.log('User cancelled login or did not fully authorize.');
     }
   }, {scope: 'email, public_profile'});
-};
+}
 
 </script>
+
+<button onclick="facebookLogin()">Login with Facebook</button>
 
 </body>
 </html>
