@@ -104,33 +104,25 @@ const firebaseConfig = {
   const db = getFirestore(app);
   const app = initializeApp(firebaseConfig);
 </script>
+
 <script src="FB_login.js" defer></script>
 <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
 
 <script>
   window.fbAsyncInit = function() {
-    FB.init({
-      appId: '1662824620837541',
-      cookie: true,
-      xfbml: true,
-      version: 'v13.0' // Check the latest API version at https://developers.facebook.com/docs/apps/versions
-    });
-    FB.AppEvents.logPageView();
-  };
-
-  (function(d, s, id){
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+  FB.init({
+    appId: '1662824620837541',
+    cookie: true,
+    xfbml: true,
+    version: 'v13.0' // Check the latest API version at https://developers.facebook.com/docs/apps/versions
+  });
+  FB.AppEvents.logPageView();
 
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
-});
+  });
 
-FB.login(function(response) {
+  FB.login(function(response) {
     if (response.authResponse) {
       console.log('Welcome! Fetching your information.... ');
       FB.api('/me', function(response) {
@@ -140,6 +132,8 @@ FB.login(function(response) {
       console.log('User cancelled login or did not fully authorize.');
     }
   }, {scope: 'email,user_likes'});
+};
+
 </script>
 
 </body>
